@@ -42,7 +42,7 @@ class Birthday(Field):
 class Name(Field):
     '''A class representing a name field.'''
     # реалізація класу
-    pass
+
 
 class Phone(Field):
     '''A class representing a phone number field.'''
@@ -86,6 +86,7 @@ class Record:
             if p.value == phone:
                 self.phones.remove(p)
                 return p
+        return None
 
     def edit_phone(self, phone:str, new_phone):
         '''Edit a phone number in the contact.'''
@@ -101,6 +102,7 @@ class Record:
         for ph in self.phones:
             if ph.value == phone:
                 return ph
+        return None
 
     def __str__(self):
         return f"Contact name: {str(self.name)}, phones: {'; '.join(str(p) for p in self.phones)}, birthday: {str(self.birthday)}"
@@ -120,6 +122,7 @@ class AddressBook(UserDict):
         '''Delete a record by name.'''
         if name in self.data:
             return self.data.pop(name)
+        return None
 
     def iterator(self, n):
         '''Generate an iterator over records with batch size n.'''
